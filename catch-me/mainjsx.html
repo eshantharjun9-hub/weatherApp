@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const rootEle = document.querySelector("#root");
+      let score=0
+      function ClickBoxGame() {
+        const handleClick = (e) => {
+          let valx = Math.random() * 200 + "px";
+          let valy = Math.random() * 300 + "px";
+          const box = e.target;
+          score++
+          document.querySelector("#score").textContent= `Score: ${score}`
+          console.log(score)
+          box.style.position = "relative";
+          box.style.left = valx;
+          box.style.top = valy;
+        };
+
+        return (
+          <div className="game">
+            <div id="score" className="score">
+              Score:{score}
+            </div>
+
+            <div
+              onClick={handleClick}
+              className="box"
+              style={{ width: "100px", height: "100px", background: "red" }}
+            ></div>
+          </div>
+        );
+      }
+
+      ReactDOM.render(<ClickBoxGame />, rootEle);
+    </script>
+  </body>
+</html>
