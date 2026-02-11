@@ -1,0 +1,40 @@
+.game {
+  border: 3px solid black;
+  height: 500px;
+  width: 300px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.score {
+  height: 30px;
+}
+#score{
+    font: bold;
+    font-size: larger;
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  height: 40px;
+  width: 40px;
+  background: red;
+}
+
+.play-area {
+  height: 400px;
+  width: 200px;
+}
+
+.box:hover {
+  cursor: grab;
+}
