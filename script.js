@@ -4,22 +4,29 @@ async function getWeather(){
 
     const city = document.getElementById("cityInput").value;
 
-    const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
+    const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
 
-    const response = await fetch(url);
-    const data = await response.json();
+    try{
 
-    document.getElementById("cityName").innerText = data.location.name;
+        const response = await fetch(url);
+        const data = await response.json();
 
-    document.getElementById("temperature").innerText =
-    "Temperature: " + data.current.temp_c + " °C";
+        document.getElementById("cityName").innerText = data.location.name;
 
-    document.getElementById("description").innerText =
-    "Condition: " + data.current.condition.text;
+        document.getElementById("temperature").innerText =
+        "Temperature: " + data.current.temp_c + " °C";
 
-    document.getElementById("humidity").innerText =
-    "Humidity: " + data.current.humidity + "%";
+        document.getElementById("description").innerText =
+        "Condition: " + data.current.condition.text;
 
-    document.getElementById("wind").innerText =
-    "Wind Speed: " + data.current.wind_kph + " kph";
+        document.getElementById("humidity").innerText =
+        "Humidity: " + data.current.humidity + "%";
+
+        document.getElementById("wind").innerText =
+        "Wind Speed: " + data.current.wind_kph + " kph";
+
+    }catch(error){
+        console.log(error);
+        alert("Failed to fetch weather data");
+    }
 }
